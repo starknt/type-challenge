@@ -14,8 +14,20 @@ type AddNumber<N1 extends number, N2 extends number> = [...CreateArray<N1, 1>, .
 //         ? AddNumber<Counter, 1> : 1>}`
 
 // 解法 2
-type RepeatString<S extends string, Count extends number, Array extends any[] = []> = 
-    Array['length'] extends Count 
+type RepeatString<S extends string, Count extends number, Array extends any[] = []> =
+    Array['length'] extends Count
     ? S : `${S}${RepeatString<S, Count, [S, ...Array]>}`
 
-type r = RepeatString<'a', 3>
+/**
+ * @template String 需要反转的字符串
+ */
+type Reverse<String extends string> = ArrayToString<StringToArray<String>>
+
+/**
+ * @template Array 需要转换成字符串的字符串数组
+ */
+type ArrayToString<Array extends any[]> =
+    Array['length'] extends 0 ? ""
+    : Array extends [infer F, ...infer R] ? F extends string ? `${F}${ArrayToString<R>}`
+    : never
+    : never
