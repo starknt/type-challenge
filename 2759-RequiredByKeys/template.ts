@@ -1,3 +1,4 @@
+// @ts-ignore
 type RequiredByKeys<O extends Record<string, any>, U = keyof O, UU = U extends keyof O ? U : never, RO = Required<Pick<O, UU>>> =
   Expand<RO & O>
 
