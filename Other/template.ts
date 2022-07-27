@@ -31,3 +31,5 @@ type ArrayToString<Array extends any[]> =
     : Array extends [infer F, ...infer R] ? F extends string ? `${F}${ArrayToString<R>}`
     : never
     : never
+
+type Expand<T extends Record<string, any>> = T extends object ? T extends infer O ? { [K in keyof O]: Expand<O[K]> } : never : T
