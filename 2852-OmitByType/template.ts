@@ -1,0 +1,1 @@
+type OmitByType<T extends Record<string, any>, U> = Omit<T, keyof PickByType<T, U>>
