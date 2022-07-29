@@ -19,11 +19,6 @@ type RepeatString<S extends string, Count extends number, Array extends any[] = 
     ? S : `${S}${RepeatString<S, Count, [S, ...Array]>}`
 
 /**
- * @template String 需要反转的字符串
- */
-type Reverse<String extends string> = ArrayToString<StringToArray<String>>
-
-/**
  * @template Array 需要转换成字符串的字符串数组
  */
 type ArrayToString<Array extends any[]> =
