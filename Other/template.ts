@@ -27,4 +27,6 @@ type ArrayToString<Array extends any[]> =
     : never
     : never
 
+type ReverseArray<T extends any[]> = T extends [infer F, ...infer R] ? [...Reverse<R>, F] : []
+
 type Expand<T extends Record<string, any>> = T extends object ? T extends infer O ? { [K in keyof O]: Expand<O[K]> } : never : T
